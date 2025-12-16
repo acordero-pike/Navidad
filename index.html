@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteo Amigo Secreto Secuencial</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        input, button, select { padding: 10px; margin: 5px 0; display: block; width: 100%; box-sizing: border-box; }
+        .menu-btn { margin-top: 20px; font-size: 1.2em; }
+        #nombres-lista { margin-top: 15px; padding: 10px; border: 1px solid #ccc; min-height: 50px; font-weight: bold;}
+        .hidden { display: none; }
+        .alert-info { background-color: #e0f7fa; border-left: 5px solid #00bcd4; padding: 10px; margin-bottom: 15px; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>🎅 Sorteo de Amigo Secreto</h1>
+
+    <div id="menu-principal">
+        <h2>Bienvenido al Sorteo</h2>
+        <p>Por favor, selecciona qué deseas hacer:</p>
+        <button class="menu-btn" onclick="mostrarSeccion('asignacion')">1. Asignar/Sortear mi Amigo Secreto (si no lo he hecho)</button>
+        <button class="menu-btn" onclick="mostrarSeccion('consulta')">2. Consultar mi Amigo Secreto (si ya fui asignado)</button>
+        <p style="margin-top: 30px;">Participantes: <span id="nombres-lista">Albin | Pamela | Junior | Kleyber | Caro | Rocio</span></p>
+    </div>
+
+    <div id="seccion-asignacion" class="hidden">
+        <button onclick="mostrarSeccion('menu')" style="width: auto;">&#x25C0; Volver al Menú</button>
+        <h2>Asignación Secuencial</h2>
+        
+        <div class="alert-info">
+            <p>Selecciona tu nombre, ingresa una clave única y haz clic en **"Sortear y Ver"** para que se te asigne tu amigo secreto y tu resultado se guarde.</p>
+        </div>
+
+        <select id="nombre-dador-selector">
+            <option value="">-- Selecciona tu nombre --</option>
+            </select>
+        
+        <input type="password" id="clave-dador-input" placeholder="Ingresa tu clave secreta">
+        
+        <button onclick="asignarAmigoSecreto()">Sortear y Ver mi Amigo Secreto</button>
+
+        <div id="resultado-asignacion" style="margin-top: 20px;"></div>
+        
+        <hr>
+
+        <h3>Estado del Sorteo</h3>
+        <p>Participantes restantes para asignar: <span id="participantes-restantes-count">6</span></p>
+        
+        <div id="resultados-finales" class="hidden">
+            <p class="success">¡El sorteo ha finalizado! Todos han sido asignados.</p>
+            <p>**Solo el organizador debe** descargar el archivo TXT como registro final encriptado.</p>
+            <button onclick="descargarResultados()">Descargar Archivo Encriptado (TXT)</button>
+        </div>
+    </div>
+    
+    <div id="seccion-consulta" class="hidden">
+        <button onclick="mostrarSeccion('menu')" style="width: auto;">&#x25C0; Volver al Menú</button>
+        <h2>Consulta tu Resultado</h2>
+        
+        <p>Selecciona tu nombre e ingresa tu clave secreta para desencriptar y ver tu amigo secreto.</p>
+        
+        <select id="nombre-consulta-selector">
+            <option value="">-- Selecciona tu nombre --</option>
+             </select>
+        <input type="password" id="clave-consulta-input" placeholder="Ingresa tu clave secreta">
+        <button onclick="consultarAmigoSecreto()">Ver mi Amigo Secreto</button>
+
+        <div id="resultado-consulta" style="margin-top: 20px; font-weight: bold;"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <audio id="musica-fondo" loop>
+        <source src="navidad.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</body>
+</html>
