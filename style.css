@@ -1,0 +1,125 @@
+/* Paleta de Colores Navideña */
+:root {
+    --color-fondo-oscuro: #8B0000; /* Rojo Borgoña Oscuro */
+    --color-fondo-claro: #B22222; /* Rojo Ladrillo */
+    --color-principal: #006400; /* Verde Oscuro (Christmas Green) */
+    --color-acento: #FFD700; /* Dorado */
+    --color-texto-claro: #F8F8FF; /* Blanco Fantasma */
+    --color-tarjeta-fondo: #F5F5DC; /* Beige/Crema para tarjetas */
+}
+
+/* Estilos Globales y Fondo */
+body {
+    font-family: 'Arial', sans-serif;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    /* Fondo con degradado navideño */
+    background: linear-gradient(135deg, var(--color-principal) 0%, var(--color-fondo-claro) 100%);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Contenedor Principal para centrar el contenido */
+#menu-principal, #seccion-asignacion, #seccion-consulta {
+    background-color: var(--color-tarjeta-fondo);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    margin-top: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Encabezados */
+h1 {
+    font-family: 'Georgia', serif;
+    color: var(--color-acento);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 0;
+}
+
+h2, h3 {
+    color: var(--color-principal);
+    border-bottom: 2px solid var(--color-acento);
+    padding-bottom: 5px;
+    margin-top: 15px;
+}
+
+/* Estilo para los participantes en el menú */
+#nombres-lista {
+    background-color: var(--color-texto-claro);
+    border: 1px dashed var(--color-principal);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-fondo-oscuro);
+    border-radius: 5px;
+}
+
+/* Estilos de Elementos de Formulario */
+input[type="text"], input[type="password"], select {
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid var(--color-principal);
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+/* Estilos de Botones */
+button {
+    background-color: var(--color-principal);
+    color: var(--color-texto-claro);
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    font-weight: bold;
+    box-shadow: 0 4px var(--color-fondo-oscuro); /* Sombra 3D */
+}
+
+button:hover {
+    background-color: var(--color-fondo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px var(--color-fondo-claro);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px var(--color-fondo-oscuro);
+}
+
+/* Botones especiales del menú principal */
+.menu-btn {
+    background-color: var(--color-fondo-claro);
+    box-shadow: 0 4px var(--color-fondo-oscuro);
+}
+.menu-btn:hover {
+    background-color: var(--color-fondo-oscuro);
+}
+
+/* Botón de volver al menú (más pequeño) */
+#seccion-asignacion button[onclick="mostrarSeccion('menu')"],
+#seccion-consulta button[onclick="mostrarSeccion('menu')"] {
+    background-color: #6c757d; /* Gris */
+    box-shadow: 0 3px #495057;
+    width: auto;
+    padding: 8px 15px;
+    display: inline-block;
+}
+#seccion-asignacion button[onclick="mostrarSeccion('menu')"]:hover,
+#seccion-consulta button[onclick="mostrarSeccion('menu')"]:hover {
+    background-color: #495057;
+}
+
+/* Mensajes de Alerta y Resultado */
+.alert
